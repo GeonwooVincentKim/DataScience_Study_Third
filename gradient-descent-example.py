@@ -1,4 +1,4 @@
-from vector_example import Vector, dot
+from vector.vector_example import Vector, dot
 
 
 def sum_of_squares(v: Vector):
