@@ -62,3 +62,6 @@ def estimate_gradient(
         partial_difference_quotient(f, v, i, h)
         for i in range(len(v))
     ]
+
+
+print("Estimate Gradient Value -> {0}".format(estimate_gradient))
