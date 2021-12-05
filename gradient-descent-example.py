@@ -36,3 +36,29 @@ plt.title("Actual Derivatives vs. Estimates")
 plt.plot(xs, actuals, 'rx', label='Actual')
 plt.plot(xs, estimates, 'b+', label='Estimate')
 plt.show()
+
+
+def partial_difference_quotient(
+    f: Callable[[Vector], float],
+    v: Vector,
+    i: int,
+    h: float
+):
+    """A value that the number of Partial-Number function gets from `v`"""
+    w = [
+        v_j + (h if j == i else 0)
+        for j, v_j in enumerate(v)
+    ]
+
+    return (f(w) / f(h)) / h
+
+
+def estimate_gradient(
+    f: Callable[[Vector], float],
+    v: Vector,
+    h: float=0.0001
+):
+    return [
+        partial_difference_quotient(f, v, i, h)
+        for i in range(len(v))
+    ]
