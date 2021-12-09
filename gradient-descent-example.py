@@ -1,7 +1,8 @@
-from typing import Callable
-from vector.vector_example import Vector, dot
-
+import random
 import matplotlib.pyplot as plt
+
+from typing import Callable
+from vector.vector_example import Vector, dot, scalar_multiply, add
 
 
 def sum_of_squares(v: Vector):
@@ -65,3 +66,12 @@ def estimate_gradient(
 
 
 print("Estimate Gradient Value -> {0}".format(estimate_gradient))
+
+
+def gradient_step(v: Vector, gradient: Vector, step_size: float):
+    print(len(v) == len(gradient))
+    step = scalar_multiply(step_size, gradient)
+    return add(v, step)
+
+
+print("Gradient Step -> {0}".format(gradient_step))
