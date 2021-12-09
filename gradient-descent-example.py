@@ -2,7 +2,7 @@ import random
 import matplotlib.pyplot as plt
 
 from typing import Callable
-from vector.vector_example import Vector, dot, scalar_multiply, add
+from vector.vector_example import Vector, dot, scalar_multiply, add, distance
 
 
 def sum_of_squares(v: Vector):
@@ -75,3 +75,22 @@ def gradient_step(v: Vector, gradient: Vector, step_size: float):
 
 
 print("Gradient Step -> {0}".format(gradient_step))
+
+
+def sum_of_squares_gradient(v: Vector):
+    return [2 * v_i for v_i in v]
+
+
+print("Sum of Squares Gradient -> {0}".format(sum_of_squares_gradient))
+
+## Set Random Start-Point
+v = [random.uniform(-10, 10) for i in range(3)]
+print(v)
+
+
+for epoch in range(1000):
+    grad = sum_of_squares_gradient(v)
+    v = gradient_step(v, grad, -0.01)
+    print(epoch, v)
+
+print("Distance True of False -> {0}".format(distance(v, [0, 0, 0]) < 0.001))
