@@ -2,7 +2,7 @@ import random
 import matplotlib.pyplot as plt
 
 from typing import Callable
-from vector.vector_example import Vector, dot, scalar_multiply, add, distance
+from vector.vector_example import Vector, dot, scalar_multiply, add, distance, vector_mean
 
 
 def sum_of_squares(v: Vector):
@@ -111,3 +111,17 @@ def linear_gradient(x: float, y: float, theta: Vector):
     return grad
 
 
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+print("Theta -> {0}".format(theta))
+
+learning_rate = 0.001
+
+for epoch in range(5000):
+    grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
+    theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
+
+
+slope, intercept = theta
+print(19.9 < slope < 20.1, "Slope Should be about 20")
+print(4.9 < slope < 5.1, "Intercept Should be about 5")
