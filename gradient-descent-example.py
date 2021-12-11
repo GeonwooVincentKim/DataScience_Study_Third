@@ -96,32 +96,50 @@ for epoch in range(1000):
 print("Distance True of False -> {0}".format(distance(v, [0, 0, 0]) < 0.001))
 
 print("\n----------------------------------------------------------\n")
-inputs = [(x, 20 * x + 5) for x in range(-50, 50)]
-print("Inputs -> {0}".format(inputs))
+# inputs = [(x, 20 * x + 5) for x in range(-50, 50)]
+# print("Inputs -> {0}".format(inputs))
 
 
-def linear_gradient(x: float, y: float, theta: Vector):
-    slope, intercept = theta
-    predicted = slope * x + intercept
-    print("Predicted -> {0}".format(predicted))
+# def linear_gradient(x: float, y: float, theta: Vector):
+#     slope, intercept = theta
+#     predicted = slope * x + intercept
+#     print("Predicted -> {0}".format(predicted))
 
-    error = (predicted - y)
-    squared_error = error ** 2
-    grad = [2 * error * x, 2 * error]
-    return grad
-
-
-theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
-print("Theta -> {0}".format(theta))
-
-learning_rate = 0.001
-
-for epoch in range(5000):
-    grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
-    theta = gradient_step(theta, grad, -learning_rate)
-    print(epoch, theta)
+#     error = (predicted - y)
+#     squared_error = error ** 2
+#     grad = [2 * error * x, 2 * error]
+#     return grad
 
 
-slope, intercept = theta
-print(19.9 < slope < 20.1, "Slope Should be about 20")
-print(4.9 < slope < 5.1, "Intercept Should be about 5")
+# theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+# print("Theta -> {0}".format(theta))
+
+# learning_rate = 0.001
+
+# for epoch in range(5000):
+#     grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
+#     theta = gradient_step(theta, grad, -learning_rate)
+#     print(epoch, theta)
+
+
+# slope, intercept = theta
+# print(19.9 < slope < 20.1, "Slope Should be about 20")
+# print(4.9 < slope < 5.1, "Intercept Should be about 5")
+
+
+T = TypeVar('T')
+
+
+def minibatches(dataset: List[T], batch_size: int, shuffle: bool=True) -> Iterator[List[T]]:
+    """
+        Generate MiniBatch by sampling data-point as a Batch-Size from DataSet
+    """
+
+    batch_starts = [start for start in range(0, len(dataset), batch_size)]
+    print("Batch Starts -> {0}".format(batch_starts))
+
+    if shuffle: random.shuffle(batch_starts)
+
+    for start in batch_starts:
+        end = start + batch_size
+        yield dataset[start:end]
