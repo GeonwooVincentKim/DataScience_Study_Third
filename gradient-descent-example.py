@@ -94,3 +94,20 @@ for epoch in range(1000):
     print(epoch, v)
 
 print("Distance True of False -> {0}".format(distance(v, [0, 0, 0]) < 0.001))
+
+print("\n----------------------------------------------------------\n")
+inputs = [(x, 20 * x + 5) for x in range(-50, 50)]
+print("Inputs -> {0}".format(inputs))
+
+
+def linear_gradient(x: float, y: float, theta: Vector):
+    slope, intercept = theta
+    predicted = slope * x + intercept
+    print("Predicted -> {0}".format(predicted))
+
+    error = (predicted - y)
+    squared_error = error ** 2
+    grad = [2 * error * x, 2 * error]
+    return grad
+
+
