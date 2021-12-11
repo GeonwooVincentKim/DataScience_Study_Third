@@ -103,7 +103,6 @@ print("Inputs -> {0}".format(inputs))
 def linear_gradient(x: float, y: float, theta: Vector):
     slope, intercept = theta
     predicted = slope * x + intercept
-    # print("Predicted -> {0}".format(predicted))
 
     error = (predicted - y)
     squared_error = error ** 2
@@ -111,20 +110,22 @@ def linear_gradient(x: float, y: float, theta: Vector):
     return grad
 
 
-# theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
-# print("Theta -> {0}".format(theta))
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+print("Theta -> {0}".format(theta))
 
 learning_rate = 0.001
 
-# for epoch in range(5000):
-#     grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
-#     theta = gradient_step(theta, grad, -learning_rate)
-#     print(epoch, theta)
+for epoch in range(5000):
+    grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
+    theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
 
 
-# slope, intercept = theta
-# print(19.9 < slope < 20.1, "Slope Should be about 20")
-# print(4.9 < slope < 5.1, "Intercept Should be about 5")
+slope, intercept = theta
+print(19.9 < slope < 20.1, "Slope Should be about 20")
+print(4.9 < slope < 5.1, "Intercept Should be about 5")
+
+print("\n--------------------------------------------------------------\n")
 
 
 T = TypeVar('T')
@@ -152,3 +153,24 @@ for epoch in range(1000):
         grad = vector_mean([linear_gradient(x, y, theta) for x, y in batch])
         theta = gradient_step(theta, grad, -learning_rate)
     print(epoch, theta)
+
+
+slope, intercept = theta
+
+print(19.9 < slope < 20.1, "Slope Should be about 20")
+print(4.9 < slope < 5.1, "Intercept Should be about 5")
+
+print("\n--------------------------------------------------------------------------------\n")
+
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+
+for epoch in range(100):
+    for x, y in inputs:
+        grad = linear_gradient(x, y, theta)
+        theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
+
+slope, intercept = theta
+
+print(19.9 < slope < 20.1, "Slope Should be about 20")
+print(4.9 < slope < 5.1, "Intercept Should be about 5")
