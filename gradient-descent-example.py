@@ -1,7 +1,7 @@
 import random
 import matplotlib.pyplot as plt
 
-from typing import Callable
+from typing import Callable, TypeVar, List, Iterator
 from vector.vector_example import Vector, dot, scalar_multiply, add, distance, vector_mean
 
 
