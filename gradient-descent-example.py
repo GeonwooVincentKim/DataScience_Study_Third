@@ -96,25 +96,25 @@ for epoch in range(1000):
 print("Distance True of False -> {0}".format(distance(v, [0, 0, 0]) < 0.001))
 
 print("\n----------------------------------------------------------\n")
-# inputs = [(x, 20 * x + 5) for x in range(-50, 50)]
-# print("Inputs -> {0}".format(inputs))
+inputs = [(x, 20 * x + 5) for x in range(-50, 50)]
+print("Inputs -> {0}".format(inputs))
 
 
-# def linear_gradient(x: float, y: float, theta: Vector):
-#     slope, intercept = theta
-#     predicted = slope * x + intercept
-#     print("Predicted -> {0}".format(predicted))
+def linear_gradient(x: float, y: float, theta: Vector):
+    slope, intercept = theta
+    predicted = slope * x + intercept
+    # print("Predicted -> {0}".format(predicted))
 
-#     error = (predicted - y)
-#     squared_error = error ** 2
-#     grad = [2 * error * x, 2 * error]
-#     return grad
+    error = (predicted - y)
+    squared_error = error ** 2
+    grad = [2 * error * x, 2 * error]
+    return grad
 
 
 # theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
 # print("Theta -> {0}".format(theta))
 
-# learning_rate = 0.001
+learning_rate = 0.001
 
 # for epoch in range(5000):
 #     grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
@@ -143,3 +143,12 @@ def minibatches(dataset: List[T], batch_size: int, shuffle: bool=True) -> Iterat
     for start in batch_starts:
         end = start + batch_size
         yield dataset[start:end]
+
+
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+
+for epoch in range(1000):
+    for batch in minibatches(inputs, batch_size=20):
+        grad = vector_mean([linear_gradient(x, y, theta) for x, y in batch])
+        theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
