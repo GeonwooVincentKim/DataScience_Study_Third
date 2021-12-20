@@ -42,7 +42,7 @@ with open("tab_delimited_stock_prices.txt", 'r', encoding='utf8',newline='') as 
 
         process(date, symbol, closing_price)
 
-print("")
+print()
 
 with open("colon_delimited_stock_prices.txt", "r", encoding='utf8', newline='') as f:
     colon_reader = csv.DictReader(f, delimiter=':')
@@ -54,3 +54,18 @@ with open("colon_delimited_stock_prices.txt", "r", encoding='utf8', newline='') 
         closing_price = float(dict_row["closing_price"])
         
         process(date, symbol, closing_price)
+
+print()
+
+todays_prices = {'AAPL': 90.91, 'MSFT': 41.68, 'FB': 64.5}
+
+for price in todays_prices:
+    print(price)
+
+
+with open("comma_delimited_stock_prices.txt", 'w', encoding="utf8", newline='') as f:
+    csv_writer = csv.writer(f, delimiter=',')
+    print("CSV-Writer -> {0}".format(csv_writer))
+
+    for stock, price in todays_prices.items():
+        csv_writer.writerow([stock, price])
