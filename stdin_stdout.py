@@ -31,15 +31,26 @@ def process(date, symbol, price):
     print(date, symbol, price)
 
 
+with open("tab_delimited_stock_prices.txt", 'r', encoding='utf8',newline='') as f:
+    tab_reader = csv.reader(f, delimiter="\t")
+    print("Tab Reader -> {0}".format(tab_reader))
 
-if __name__ == "__main__":
-    with open("tab_delimited_stock_prices.txt", 'r', encoding='utf8',newline='') as f:
-        tab_reader = csv.reader(f, delimiter="\t")
-        print("Tab Reader -> {0}".format(tab_reader))
+    for row in tab_reader:
+        date = row[0]
+        symbol = row[1]
+        closing_price = float(row[2])
 
-        for row in tab_reader:
-            date = row[0]
-            symbol = row[1]
-            closing_price = float(row[2])
+        process(date, symbol, closing_price)
 
-            process(date, symbol, closing_price)
+print("")
+
+with open("colon_delimited_stock_prices.txt", "r", encoding='utf8', newline='') as f:
+    colon_reader = csv.DictReader(f, delimiter=':')
+    print("Colon Delimited -> {0}".format(colon_reader))
+
+    for dict_row in colon_reader:
+        date = dict_row["date"]
+        symbol = dict_row["symbol"]
+        closing_price = float(dict_row["closing_price"])
+        
+        process(date, symbol, closing_price)
