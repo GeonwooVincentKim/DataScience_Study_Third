@@ -4,7 +4,7 @@ import csv
 
 sys.path.append(os.path.join(os.path.dirname(os.path.join(os.path.dirname(__file__)))))
 
-from File.FileManager import *
+# from File.FileManager import *
 
 # regex = sys.argv[0]
 
@@ -33,7 +33,7 @@ def process(date, symbol, price):
 
 
 if __name__ == "__main__":
-    with open("tab_delimited_stock_prices.txt") as f:
+    with open("tab_delimited_stock_prices.txt", 'r', encoding='utf8',newline='') as f:
         tab_reader = csv.reader(f, delimiter="\t")
         print("Tab Reader -> {0}".format(tab_reader))
 
