@@ -82,3 +82,12 @@ print("URL -> {0}".format(url))
 
 html = requests.get(url).text
 print("HTML -> {0}".format(html))
+
+soup = BeautifulSoup(html, "html5lib")
+print("Soup -> {0}".format(soup))
+
+first_paragraph = soup.find("p")
+first_paragraph_text = soup.p.text
+first_paragraph_words = soup.p.text.split()
+
+print("First Paragraph -> {0}".format(first_paragraph))
