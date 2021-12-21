@@ -2,6 +2,9 @@ import sys, re
 import os
 import csv
 
+from bs4 import BeautifulSoup
+import requests
+
 sys.path.append(os.path.join(os.path.dirname(os.path.join(os.path.dirname(__file__)))))
 
 # from File.FileManager import *
@@ -69,3 +72,13 @@ with open("comma_delimited_stock_prices.txt", 'w', encoding="utf8", newline='') 
 
     for stock, price in todays_prices.items():
         csv_writer.writerow([stock, price])
+
+
+url = (
+    "https://raw.githubsercontent.com/"
+    "joelgrus/data/master/getting-data.html"
+)
+print("URL -> {0}".format(url))
+
+html = requests.get(url).text
+print("HTML -> {0}".format(html))
