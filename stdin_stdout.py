@@ -91,3 +91,8 @@ first_paragraph_text = soup.p.text
 first_paragraph_words = soup.p.text.split()
 
 print("First Paragraph -> {0}".format(first_paragraph))
+
+first_paragraph_id = soup.p['id']
+first_paragraph_id2 = soup.p.get('id')
+
+print("First Paragraph_id -> {0}\nFirst Paragraph_id2 -> {1}".format(first_paragraph_id, first_paragraph_id2))
