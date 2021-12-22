@@ -83,14 +83,17 @@ print("URL -> {0}".format(url))
 html = requests.get(url).text
 print("HTML -> {0}".format(html))
 
-soup = BeautifulSoup(html, "html5lib")
+soup = BeautifulSoup(requests.get(url).text, "html5lib")
 print("Soup -> {0}".format(soup))
 
 first_paragraph = soup.find("p")
-first_paragraph_text = soup.p.text
-first_paragraph_words = soup.p.text.split()
+first_paragraph_text = soup.find("p").get()
+first_paragraph_words = soup.get_text().split()
+# first_paragraph_words = soup.p.text.split()
 
 print("First Paragraph -> {0}".format(first_paragraph))
+print("First Paragraph Text -> {0}".format(first_paragraph_text))
+print("First Paragraph words -> {0}".format(first_paragraph_words))
 
 first_paragraph_id = soup.p['id']
 first_paragraph_id2 = soup.p.get('id')
