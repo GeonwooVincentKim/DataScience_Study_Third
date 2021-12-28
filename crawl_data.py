@@ -78,6 +78,7 @@ for house_url, pr_links in press_releases.items():
 
         text = requests.get(url).text
 
+        # Done with this `house_url``
         if paragraph_mentions(text, "data"):
             print(f"{house_url}")
-            break   # Done with this `house_url``
+            break  
