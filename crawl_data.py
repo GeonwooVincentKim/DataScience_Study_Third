@@ -27,3 +27,11 @@ print(re.match(regex, "http://joel.house.gov"))
 print(re.match(regex, "https://joel.house.gov"))
 print(re.match(regex, "http://joel.house.gov/"))
 print(re.match(regex, "https://joel.house.gov/"))
+print(re.match(regex, "joel.house.gov"))
+print(re.match(regex, "http://joel.house.com"))
+print(re.match(regex, "http://joel.house.com"))
+print(re.match(regex, "https://joel.house.gov/biography"))
+
+good_urls = [url for url in all_urls if re.match(regex, url)]
+print(len(good_urls))
+print("All Good URLs -> {0}".format(good_urls))
