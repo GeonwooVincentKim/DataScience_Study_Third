@@ -22,3 +22,8 @@ print("All URLs -> {0}".format(all_urls))
 print("\n------------------------------------------------------\n")
 regex = r"^https?://.*\.house\.gov/?$"
 print("Regex Print Text -> {0}".format(regex))
+
+print(re.match(regex, "http://joel.house.gov"))
+print(re.match(regex, "https://joel.house.gov"))
+print(re.match(regex, "http://joel.house.gov/"))
+print(re.match(regex, "https://joel.house.gov/"))
