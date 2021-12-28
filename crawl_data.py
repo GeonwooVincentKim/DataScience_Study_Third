@@ -47,11 +47,27 @@ print("Entire Links -> {0}".format(links))
 
 press_releases: Dict[str, Set[str]] = {}
 
-for house_url in good_urls:
-    html = requests.get(house_url).text
-    soup = BeautifulSoup(html, "html5lib")
-    pr_links = {a['href'] for a in soup('a') if 'press release' in a.text.lower()}
+# for house_url in good_urls:
+#     html = requests.get(house_url).text
+#     soup = BeautifulSoup(html, "html5lib")
+#     pr_links = {a['href'] for a in soup('a') if 'press release' in a.text.lower()}
 
-    print(f"{house_url}: {pr_links}")
-    press_releases[house_url] = pr_links
-    print("Press Releases -> {0}".format(press_releases[house_url]))
+#     print(f"{house_url}: {pr_links}")
+#     press_releases[house_url] = pr_links
+#     print("Press Releases -> {0}".format(press_releases[house_url]))
+
+
+def paragraph_mentions(text: str, keyword: str):
+    soup = BeautifulSoup(text, "html5lib")
+    paragraphs = [p.get_text() for p in soup('p')]
+
+    return any(
+        keyword.lower() in paragraph.lower()
+        for paragraph in paragraphs
+    )
+
+
+text = """<body><h1>Facebook</h1><p>Twitter</p>"""
+print(paragraph_mentions(text, "twitter"))
+print(not paragraph_mentions(text, "facebook"))
+
