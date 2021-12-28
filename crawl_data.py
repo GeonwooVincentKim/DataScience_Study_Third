@@ -1,4 +1,5 @@
 import re
+from typing import Dict, Set
 
 from bs4 import BeautifulSoup
 import requests
@@ -35,3 +36,11 @@ print(re.match(regex, "https://joel.house.gov/biography"))
 good_urls = [url for url in all_urls if re.match(regex, url)]
 print(len(good_urls))
 print("All Good URLs -> {0}".format(good_urls))
+
+html = requests.get("https://jayapal.house.gov").text
+soup = BeautifulSoup(html, "html5lib")
+
+links = {a['href'] for a in soup('a') if 'press releases' in a.text.lower()}
+print(links)
+print("Entire Links -> {0}".format(links))
+
