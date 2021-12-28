@@ -1,3 +1,5 @@
+import re
+
 from bs4 import BeautifulSoup
 import requests
 
@@ -16,3 +18,7 @@ all_urls = [
 
 print(len(all_urls))
 print("All URLs -> {0}".format(all_urls))
+
+print("\n------------------------------------------------------\n")
+regex = r"^https?://.*\.house\.gov/?$"
+print("Regex Print Text -> {0}".format(regex))
