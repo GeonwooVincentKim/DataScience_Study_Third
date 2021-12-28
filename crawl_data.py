@@ -44,3 +44,14 @@ links = {a['href'] for a in soup('a') if 'press releases' in a.text.lower()}
 print(links)
 print("Entire Links -> {0}".format(links))
 
+
+press_releases: Dict[str, Set[str]] = {}
+
+for house_url in good_urls:
+    html = requests.get(house_url).text
+    soup = BeautifulSoup(html, "html5lib")
+    pr_links = {a['href'] for a in soup('a') if 'press release' in a.text.lower()}
+
+    print(f"{house_url}: {pr_links}")
+    press_releases[house_url] = pr_links
+    print("Press Releases -> {0}".format(press_releases[house_url]))
