@@ -3,6 +3,8 @@ import json2xml
 import xml
 
 import requests
+from collections import Counter
+from dateutil.parser import  parse
 
 
 serialized = """{
@@ -28,3 +30,10 @@ endpoint = f"https://api.github.com/users/{github_user}/repos"
 
 repos = json.loads(requests.get(endpoint).text)
 print("Github Repositories -> {0}".format(repos))
+
+dates = [parse(repo["created_at"]) for repo in repos]
+month_counts = Counter(date.month for date in dates)
+weekday_counts = Counter(date.weekday() for date in dates)
+
+print("\n\n---------------------------------\n\n")
+print("Dates -> {0}\nMonth-Counts -> {1}\nWeekday-Counts -> {2}".format(dates, month_counts, weekday_counts))
