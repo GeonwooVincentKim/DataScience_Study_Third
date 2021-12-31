@@ -38,6 +38,7 @@ weekday_counts = Counter(date.weekday() for date in dates)
 print("\n\n---------------------------------\n\n")
 print("Dates -> {0}\nMonth-Counts -> {1}\nWeekday-Counts -> {2}".format(dates, month_counts, weekday_counts))
 
+
 last_5_repositories = sorted(
     repos,
     key=lambda r: r["pushed_at"],
