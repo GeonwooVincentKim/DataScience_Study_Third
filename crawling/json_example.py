@@ -27,4 +27,4 @@ github_user = "GeonwooVincentKim"
 endpoint = f"https://api.github.com/users/{github_user}/repos"
 
 repos = json.loads(requests.get(endpoint).text)
-print("{0}".format(repos))
+print("Github Repositories -> {0}".format(repos))
