@@ -37,3 +37,17 @@ weekday_counts = Counter(date.weekday() for date in dates)
 
 print("\n\n---------------------------------\n\n")
 print("Dates -> {0}\nMonth-Counts -> {1}\nWeekday-Counts -> {2}".format(dates, month_counts, weekday_counts))
+
+last_5_repositories = sorted(
+    repos,
+    key=lambda r: r["pushed_at"],
+    reverse=True
+)[:5]
+
+last_5_repositories = [
+    repo["language"]
+    for repo in last_5_repositories
+]
+
+print("\n------------------------------------------\n")
+print("Last 5 Repositories in Github -> {0}".format(last_5_repositories))
