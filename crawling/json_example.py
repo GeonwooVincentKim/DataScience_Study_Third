@@ -2,6 +2,8 @@ import json
 import json2xml
 import xml
 
+import requests
+
 
 serialized = """{
     "title": "Data Science Book",
@@ -20,5 +22,9 @@ print("Deserialized Topics -> {0}".format("data science" in deserialized["topics
 with open("json_data.json", "w") as json_file:
     json.dump(serialized, json_file)
 
-# Get `JSON` data and write `XML` file
 
+github_user = "GeonwooVincentKim"
+endpoint = f"https://api.github.com/users/{github_user}/repos"
+
+repos = json.loads(requests.get(endpoint).text)
+print("{0}".format(repos))
