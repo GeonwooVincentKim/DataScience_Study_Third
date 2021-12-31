@@ -14,3 +14,4 @@ print("XML Element Name -> {0}".format(read_xml))
 xml_e_tree.SubElement(read_xml, "title").text = get_json["title"]
 xml_e_tree.SubElement(read_xml, "author").text = get_json["author"]
 xml_e_tree.SubElement(read_xml, "publicationYear").text = str(get_json["publicationYear"])
+xml_e_tree.SubElement(read_xml, "topics").text = get_json["topics"]
