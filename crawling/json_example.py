@@ -10,3 +10,4 @@ serialized = """{
 deserialized = json.loads(serialized)
 print("Deserialized -> {0}".format(deserialized))
 print("Deserialized Publication-Year -> {0}".format(deserialized["publicationYear"]))
+print("Deserialized Topics -> {0}".format("data science" in deserialized["topics"]))
