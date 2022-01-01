@@ -34,6 +34,13 @@ def plot_histogram(points: List[float], bucket_size: float, title: str=""):
     plt.title(title)
 
 
-# Uniform Distribution
+# Uniform-Distribution
 uniform = [200 * random.random() - 100 for _ in range(10000)]
+print("Uniform-Distribution -> {0}".format(uniform))
 
+# Normal-Distribution
+normal = [
+    57 * inverse_normal_cdf(random.random())
+    for _ in range(10000)
+]
+print("Normal-Distribution -> {0}".format(normal))
