@@ -32,6 +32,7 @@ def plot_histogram(points: List[float], bucket_size: float, title: str=""):
     
     plt.bar(histogram.keys(), histogram.values(), width=bucket_size)
     plt.title(title)
+    plt.show()
 
 
 # Uniform-Distribution
@@ -44,3 +45,7 @@ normal = [
     for _ in range(10000)
 ]
 print("Normal-Distribution -> {0}".format(normal))
+
+
+plot_histogram(uniform, 10, "Uniform Histogram")
+
