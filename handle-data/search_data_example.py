@@ -8,9 +8,6 @@ import matplotlib.pyplot as plt
 from continuous_distribution_example import inverse_normal_cdf
 
 
-random.seed(0)
-
-
 def bucketize(point: float, bucket_size: float):
     """
         Position each data that corresponds the section of 
@@ -35,6 +32,9 @@ def plot_histogram(points: List[float], bucket_size: float, title: str=""):
     plt.show()
 
 
+# Initialize Random-Value
+random.seed(0)
+
 # Uniform-Distribution
 uniform = [200 * random.random() - 100 for _ in range(10000)]
 print("Uniform-Distribution -> {0}".format(uniform))
@@ -48,4 +48,4 @@ print("Normal-Distribution -> {0}".format(normal))
 
 
 plot_histogram(uniform, 10, "Uniform Histogram")
-
+plot_histogram(normal, 10, "Normal Histogram")
