@@ -34,3 +34,6 @@ def plot_histogram(points: List[float], bucket_size: float, title: str=""):
     plt.title(title)
 
 
+# Uniform Distribution
+uniform = [200 * random.random() - 100 for _ in range(10000)]
+
