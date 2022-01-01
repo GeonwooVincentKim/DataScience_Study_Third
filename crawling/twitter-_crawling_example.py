@@ -1,5 +1,0 @@
-import os
-
-CONSUMER_KEY = os.environ.get("TWITTER_CONSUMER_KEY")
-CONSUMER_SECRET = os.environ.get("TWITTER_CONSUMER_SECRET")
-
