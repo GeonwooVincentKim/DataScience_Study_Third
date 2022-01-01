@@ -1,8 +1,12 @@
 from typing import List, Dict
 from collections import Counter
-import math
 
+import math
+import random
 import matplotlib.pyplot as plt
+
+from continuous_distribution_example import inverse_normal_cdf
+
 
 
 def bucketize(point: float, bucket_size: float):
