@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from continuous_distribution_example import inverse_normal_cdf
 
 
+random.seed(0)
+
 
 def bucketize(point: float, bucket_size: float):
     """
@@ -30,3 +32,5 @@ def plot_histogram(points: List[float], bucket_size: float, title: str=""):
     
     plt.bar(histogram.keys(), histogram.values(), width=bucket_size)
     plt.title(title)
+
+
