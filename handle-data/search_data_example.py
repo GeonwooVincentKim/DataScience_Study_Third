@@ -80,6 +80,8 @@ plt.legend(loc=9)
 plt.title("Very Different Joint Distributions")
 plt.show()
 
+print("\n\n")
+
 
 def correlation_matrix(data: List[Vector]):
     """
@@ -107,6 +109,15 @@ def make_scatterplot_matrix():
         return row
 
     random.seed(0)
+    # Corr-Data is the list that have `four 100 dimension vector` 
     corr_data = [random_row()
             for _ in range(num_points)]
 
+    num_vectors = len(corr_data)
+    print("Num Vectors -> {0}".format(num_vectors))
+
+    fig, ax = plt.subplots(num_vectors, num_vectors)
+    plt.show()
+
+
+make_scatterplot_matrix()
