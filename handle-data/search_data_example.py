@@ -100,49 +100,52 @@ def correlation_matrix(data: List[Vector]):
     return make_matrix(num_columns, num_columns, correlation_ij)
 
 
-# first, generate some random data
+def make_scatterplot_matrix():
+    # first, generate some random data
 
-num_points = 100
+    num_points = 100
 
-def random_row():
-    row = [None, None, None, None]
-    row[0] = random_normal()
-    row[1] = -5 * row[0] + random_normal()
-    row[2] = row[0] + row[1] + 5 * random_normal()
-    row[3] = 6 if row[2] > -2 else 0
-    return row
+    def random_row():
+        row = [None, None, None, None]
+        row[0] = random_normal()
+        row[1] = -5 * row[0] + random_normal()
+        row[2] = row[0] + row[1] + 5 * random_normal()
+        row[3] = 6 if row[2] > -2 else 0
+        return row
 
-random.seed(0)
-# Corr-Data is the list that have `four 100 dimension vector` 
-corr_data = [random_row()
-        for _ in range(num_points)]
+    random.seed(0)
+    # Corr-Data is the list that have `four 100 dimension vector` 
+    corr_data = [random_row()
+            for _ in range(num_points)]
 
-_, num_columns = shape(data)
-print("Num Vectors -> {0}".format(num_columns))
+    _, num_columns = shape(corr_data)
+    print("Num Vectors -> {0}".format(num_columns))
 
-fig, ax = plt.subplots(num_columns, num_columns)
+    fig, ax = plt.subplots(num_columns, num_columns)
 
-for i in range(num_columns):
-    for j in range(num_columns):
+    for i in range(num_columns):
+        for j in range(num_columns):
 
-        # Dispersion that shows `X-Axis` for `Number J Row`, And `Y-Axis`' for `Number I Column`
-        if i != j: ax[i][j].scatter(get_column(data, j), get_column(data, i))
+            # Dispersion that shows `X-Axis` for `Number J Row`, And `Y-Axis`' for `Number I Column`
+            if i != j: ax[i][j].scatter(get_column(corr_data, j), get_column(corr_data, i))
 
-        # Print `if i == j` on the title-bar
-        else: ax[i][j].annotate(
-            "series "  + str(i), (0.5, 0.5),
-            xycoords='axes fraction',
-            ha="center", va="center"
-        )
+            # Print `if i == j` on the title-bar
+            else: ax[i][j].annotate(
+                "series "  + str(i), (0.5, 0.5),
+                xycoords='axes fraction',
+                ha="center", va="center"
+            )
 
-        # Specify the Axis-Label that is locate the bottom and Left-Side Chart
-        if i < num_columns - 1: ax[i][j].xaxis.set_visible(False)
-        if j > 0: ax[i][j].yaxis.set_visible(False)
+            # Specify the Axis-Label that is locate the bottom and Left-Side Chart
+            if i < num_columns - 1: ax[i][j].xaxis.set_visible(False)
+            if j > 0: ax[i][j].yaxis.set_visible(False)
 
-# fix the bottom right and top left axis labels, which are wrong because
-# their charts only have text in them
-ax[-1][-1].set_xlim(ax[0][-1].get_xlim())
-ax[0][0].set_ylim(ax[0][1].get_ylim())
-        
-plt.show()
+    # fix the bottom right and top left axis labels, which are wrong because
+    # their charts only have text in them
+    ax[-1][-1].set_xlim(ax[0][-1].get_xlim())
+    ax[0][0].set_ylim(ax[0][1].get_ylim())
+            
+    plt.show()
 
+
+make_scatterplot_matrix()
