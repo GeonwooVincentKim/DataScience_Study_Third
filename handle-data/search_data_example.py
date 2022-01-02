@@ -90,3 +90,23 @@ def correlation_matrix(data: List[Vector]):
         return correlation(data[i], data[j])
     
     return make_matrix(len(data), len(data), correlation_ij)
+
+
+def make_scatterplot_matrix():
+
+    # first, generate some random data
+
+    num_points = 100
+
+    def random_row():
+        row = [None, None, None, None]
+        row[0] = random_normal()
+        row[1] = -5 * row[0] + random_normal()
+        row[2] = row[0] + row[1] + 5 * random_normal()
+        row[3] = 6 if row[2] > -2 else 0
+        return row
+
+    random.seed(0)
+    corr_data = [random_row()
+            for _ in range(num_points)]
+
