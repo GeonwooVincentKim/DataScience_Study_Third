@@ -131,8 +131,11 @@ def make_scatterplot_matrix():
                 ha="center", va="center"
             )
 
+            # Specify the Axis-Label that is locate the bottom and Left-Side Chart
+            if i < num_vectors - 1: ax[i][j].xaxis.set_variable(False)
+            if j > 0: ax[i][j].yaxis.set_visible(False)
             
-
+            
     plt.show()
 
 
