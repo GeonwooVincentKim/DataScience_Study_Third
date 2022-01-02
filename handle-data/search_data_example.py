@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 from continuous_distribution_example import inverse_normal_cdf
 from matrix_example import *
+from dispersion_example import correlation
 
 
 def bucketize(point: float, bucket_size: float):
@@ -86,6 +87,6 @@ def correlation_matrix(data: List[Vector]):
         represents `Correlation` of `data[i]` and `data[j]`
     """
     def correlation_ij(i: int, j: int):
-        return correlattion(data[i], data[j])
+        return correlation(data[i], data[j])
     
 
