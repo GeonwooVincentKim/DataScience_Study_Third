@@ -31,12 +31,12 @@ for i in B:
     print("")
 
 
-# def shape(A: Matrix) -> Tuple[int: int]:
-#     """Return (Number of Rows, Number of Columns)"""
-#     num_rows = len(A)
-#     num_cols = len(A[0]) if A else 0
+def shape(A: Matrix):
+    """Return (Number of Rows, Number of Columns)"""
+    num_rows = len(A)
+    num_cols = len(A[0]) if A else 0
     
-#     return num_rows, num_cols
+    return num_rows, num_cols
 
 # assert shape([[1, 2, 3], [4, 5, 6]]) == (2, 3)
 
