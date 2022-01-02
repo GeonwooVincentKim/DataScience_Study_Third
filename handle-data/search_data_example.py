@@ -60,3 +60,8 @@ def random_normal():
 
 xs = [random_normal() for _ in range(1000)]
 print("XS -> {0}".format(xs))
+print("\n\n\n")
+
+ys1 = [x + random_normal() / 2 for x in xs]
+ys2 = [-x + random_normal() / 2 for x in xs]
+print("YS1 -> {0}\nYS2 -> {1}".format(ys1, ys2))
