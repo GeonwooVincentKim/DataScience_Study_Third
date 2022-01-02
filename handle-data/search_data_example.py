@@ -68,4 +68,8 @@ print("YS1 -> {0}\nYS2 -> {1}".format(ys1, ys2))
 
 plt.scatter(xs, ys1, marker='.', color='black', label='ys1')
 plt.scatter(xs, ys2, marker='.', color='gray', label='ys2')
+
+plt.xlabel('xs')
+plt.ylabel('ys')
+
 plt.show()
