@@ -89,4 +89,4 @@ def correlation_matrix(data: List[Vector]):
     def correlation_ij(i: int, j: int):
         return correlation(data[i], data[j])
     
-
+    return make_matrix(len(data), len(data), correlation_ij)
