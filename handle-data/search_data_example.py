@@ -49,3 +49,14 @@ print("Normal-Distribution -> {0}".format(normal))
 
 plot_histogram(uniform, 10, "Uniform Histogram")
 plot_histogram(normal, 10, "Normal Histogram")
+
+
+def random_normal():
+    """
+        Return Random-Number that follows `Standard-Normal-Distribution`
+    """
+    return inverse_normal_cdf(random.random())
+
+
+xs = [random_normal() for _ in range(1000)]
+print("XS -> {0}".format(xs))
