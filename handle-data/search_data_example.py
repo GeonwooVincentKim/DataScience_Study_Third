@@ -117,6 +117,22 @@ def make_scatterplot_matrix():
     print("Num Vectors -> {0}".format(num_vectors))
 
     fig, ax = plt.subplots(num_vectors, num_vectors)
+
+    for i in range(num_vectors):
+        for j in range(num_vectors):
+
+            # Dispersion that shows `X-Axis` for `Number J Row`, And `Y-Axis`' for `Number I Column`
+            if i != j: ax[i][j].scatter(corr_data[j], corr_data[i])
+
+            # Print `if i == j` on the title-bar
+            else: ax[i][j].annotate(
+                "series "  + str(i), (0.5, 0.5),
+                xycoords='axes fraction',
+                ha="center", va="center"
+            )
+
+            
+
     plt.show()
 
 
