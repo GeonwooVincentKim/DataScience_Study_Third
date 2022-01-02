@@ -5,7 +5,7 @@ import math
 import random
 import matplotlib.pyplot as plt
 
-from continuous_distribution_example import inverse_normal_cdf
+from continuous_distribution_example import inverse_normal_cdf, Matrix, Vector, make_matrix
 
 
 def bucketize(point: float, bucket_size: float):
