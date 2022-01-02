@@ -134,7 +134,11 @@ def make_scatterplot_matrix():
             # Specify the Axis-Label that is locate the bottom and Left-Side Chart
             if i < num_vectors - 1: ax[i][j].xaxis.set_variable(False)
             if j > 0: ax[i][j].yaxis.set_visible(False)
-            
+
+    # fix the bottom right and top left axis labels, which are wrong because
+    # their charts only have text in them
+    ax[-1][-1].set_xlim(ax[0][-1].get_xlim())
+    ax[0][0].set_ylim(ax[0][1].get_ylim())
             
     plt.show()
 
