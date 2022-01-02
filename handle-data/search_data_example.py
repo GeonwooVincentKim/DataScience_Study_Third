@@ -72,6 +72,8 @@ plt.scatter(xs, ys2, marker='.', color='gray', label='ys2')
 plt.xlabel('xs')
 plt.ylabel('ys')
 
-# plt.legend(loc=9)
+# Display the Legend of Graph
+plt.legend(loc=9)
+
 plt.title("Very Different Joint Distributions")
 plt.show()
