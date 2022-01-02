@@ -78,3 +78,14 @@ plt.legend(loc=9)
 
 plt.title("Very Different Joint Distributions")
 plt.show()
+
+
+def correlation_matrix(data: List[Vector]):
+    """
+        Return the matrix `len(data) x len(data)` that the number of `(i, j)`
+        represents `Correlation` of `data[i]` and `data[j]`
+    """
+    def correlation_ij(i: int, j: int):
+        return correlattion(data[i], data[j])
+    
+
