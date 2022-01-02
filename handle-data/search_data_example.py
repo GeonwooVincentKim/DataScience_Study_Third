@@ -95,7 +95,7 @@ def correlation_matrix(data: List[Vector]):
     _, num_columns = shape(data)
 
     def correlation_ij(i: int, j: int):
-        return correlation(data[i], data[j])
+        return correlation(get_column(data[i]), get_column(data[j]))
     
     return make_matrix(num_columns, num_columns, correlation_ij)
 
@@ -126,7 +126,7 @@ for i in range(num_columns):
     for j in range(num_columns):
 
         # Dispersion that shows `X-Axis` for `Number J Row`, And `Y-Axis`' for `Number I Column`
-        if i != j: ax[i][j].scatter(corr_data[j], corr_data[i])
+        if i != j: ax[i][j].scatter(get_column(data, j), get_column(data, i))
 
         # Print `if i == j` on the title-bar
         else: ax[i][j].annotate(
