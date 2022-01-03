@@ -27,6 +27,7 @@ print("\n--------------------\n")
 print("<Use Named-Tuple Object>")
 
 
+# Did not use the annotation
 class StockPrice(NamedTuple):
     symbol: str
     date: datetime.date
