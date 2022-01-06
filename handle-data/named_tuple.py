@@ -66,6 +66,6 @@ class StockPrice2:
 price2 = StockPrice2('MSFT', datetime.date(2018, 12, 14), 106.03)
 
 print("<Use Decorator Object>")
-print("Price2 - Symbol (StockPrice2 Class) (True of False) -> {0}".format(price2.symbol))
-print("Price2 - Symbol (StockPrice2 Class) (True of False) -> {0}".format(price2.date))
-print("Price2 - Symbol (StockPrice2 Class) (True of False) -> {0}".format(price2.closing_price))
+print("Price2 - Symbol (StockPrice2 Class) (True of False) -> {0}".format(price2.symbol == 'MSFT'))
+print("Price2 - Symbol (StockPrice2 Class) (True of False) -> {0}".format(price2.closing_price == 106.03))
+print("Price2 - Symbol (StockPrice2 Class) (True of False) -> {0}".format(price2.is_high_tech()))
