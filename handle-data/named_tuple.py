@@ -2,6 +2,8 @@ import datetime
 from collections import namedtuple
 from typing import NamedTuple
 
+from dataclasses import dataclass
+
 # Using Dictionary-Style
 # It could occurs lots of error by mistype the variable or some codes
 print("<Use Dictionary only>")
@@ -45,3 +47,19 @@ price = StockPrice('MSFT', datetime.date(2018, 12, 14), 106.83)
 print("Price - Symbol (StockPrice Class) (True or False) -> {0}".format(price.symbol == 'MSFT'))
 print("Price - Closing-Price (StockPrice Class) (True or False) -> {0}".format(price.closing_price == 106.03))
 print("Price - Is-High-Tech (StockPrice Class) (True or False) -> {0}".format(price.is_high_tech()))
+
+
+@dataclass
+class StockPrice2:
+    symbol: str
+    date: datetime.date
+    closing_price: float
+
+    def is_high_tech(self) -> bool:
+        """
+            Can add the method because it's method
+        """
+        return self.symbol in ['MSFT', 'GOOG', 'FB', 'AMZN', 'AAPL']
+
+
+price2 = StockPrice2('MSFT', datetime.date(2018, 12, 14), 106.03)
