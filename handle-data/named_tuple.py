@@ -1,5 +1,6 @@
 import csv
 import datetime
+import os
 import re
 
 from collections import namedtuple
@@ -7,6 +8,8 @@ from typing import NamedTuple, List, Optional
 
 from dataclasses import dataclass
 from dateutil.parser import parse
+
+from pathlib import Path as pd
 
 
 # Using Dictionary-Style
@@ -137,5 +140,15 @@ print("Test Case 4. Try Parse Now -> {0}".format(try_parse_row(["MSFT", "2018-12
 print("\n------------------------------------\n")
 
 
+
 data: List[StockPrice] = []
 print("Data -> {0}".format(data))
+
+parent_directory = "E://Python_Data_Analysis_3//colon_delimited_stock_prices.csv"
+save_directory = "E://Python_Data_Analysis_3//handle-data//colon_delimited_stock_prices.csv"
+
+# with open(os.path.join("path", "to", "colon_delimited_stock.csv"), "rU") as f:
+with open(save_directory, 'w') as f:
+    reader = csv.reader(f)
+    print("Reader -> {0}".format(reader))
+
