@@ -1,8 +1,10 @@
 import datetime
 from collections import namedtuple
-from typing import NamedTuple
+from typing import NamedTuple, List
 
 from dataclasses import dataclass
+from dateutil.parser import parse
+
 
 # Using Dictionary-Style
 # It could occurs lots of error by mistype the variable or some codes
@@ -75,3 +77,18 @@ price2.closing_price /= 2
 print("Check After Price2 - Closing-Price (StockPrice2 Instance) (True or False) -> {0}".format(price2.closing_price))
 print("Check After Price2 - Closing-Price (StockPrice2 Instance) (True or False) -> {0}".format(price2.closing_price == 51.03))
 
+print("\n------------------------------------\n")
+
+
+def parse_now(row: List[str]) -> StockPrice:
+    symbol, date, closing_price = row
+    
+    return StockPrice(
+        symbol=symbol,
+        date=parse(date).date(),
+        closing_price=float(closing_price)
+    )
+
+
+stock = parse_now(["MSFT", "2018-12-14", "106.03"])
+print("Stock -> {0}".format(stock))
