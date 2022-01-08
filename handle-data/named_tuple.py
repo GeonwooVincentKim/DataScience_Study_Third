@@ -1,5 +1,7 @@
+import csv
 import datetime
 import re
+
 from collections import namedtuple
 from typing import NamedTuple, List, Optional
 
@@ -121,13 +123,19 @@ def try_parse_row(row: List[str]) -> Optional[StockPrice]:
 
 
 print("Test Case 1. Try Parse Now -> {0}".format(try_parse_row(["MSFT0", "2018-12-14", "106.03"]) is None))
-assert try_parse_row(["MSFT0", "2018-12-14", "106.03"]) is None
+# assert try_parse_row(["MSFT0", "2018-12-14", "106.03"]) is None
 
 print("Test Case 2. Try Parse Now -> {0}".format(try_parse_row(["MSFT", "2018-12--14", "106.03"]) is None))
-assert try_parse_row(["MSFT", "2018-12--14", "106.03"]) is None
+# assert try_parse_row(["MSFT", "2018-12--14", "106.03"]) is None
 
 print("Test Case 3. Try Parse Now -> {0}".format(try_parse_row(["MSFT", "2018-12-14", "x"]) is None))
-assert try_parse_row(["MSFT", "2018-12--14", "x"]) is None
+# assert try_parse_row(["MSFT", "2018-12--14", "x"]) is None
 
 print("Test Case 4. Try Parse Now -> {0}".format(try_parse_row(["MSFT", "2018-12-14", "106.03"]) == stock))
-assert try_parse_row(["MSFT", "2018-12-14", "x"]) == stock
+# assert try_parse_row(["MSFT", "2018-12-14", "x"]) == stock
+
+print("\n------------------------------------\n")
+
+
+data: List[StockPrice] = []
+print("Data -> {0}".format(data))
