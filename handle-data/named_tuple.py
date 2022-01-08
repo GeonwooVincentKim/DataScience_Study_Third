@@ -120,11 +120,14 @@ def try_parse_row(row: List[str]) -> Optional[StockPrice]:
     return StockPrice(symbol, date, closing_price)
 
 
-# print("Test Case 1. Try Parse Now -> {0}".format(try_parse_row(["MSFT0", "2018-12-14", "106.03"]) is None))
+print("Test Case 1. Try Parse Now -> {0}".format(try_parse_row(["MSFT0", "2018-12-14", "106.03"]) is None))
 assert try_parse_row(["MSFT0", "2018-12-14", "106.03"]) is None
 
-# print("Test Case 2. Try Parse Now -> {0}".format(try_parse_row(["MSFT", "2018-12--14", "106.03"]) is None))
+print("Test Case 2. Try Parse Now -> {0}".format(try_parse_row(["MSFT", "2018-12--14", "106.03"]) is None))
 assert try_parse_row(["MSFT", "2018-12--14", "106.03"]) is None
 
-# print("Test Case 3. Try Parse Now -> {0}".format(try_parse_row(["MSFT", "2018-12-14", "x"]) is None))
+print("Test Case 3. Try Parse Now -> {0}".format(try_parse_row(["MSFT", "2018-12-14", "x"]) is None))
 assert try_parse_row(["MSFT", "2018-12--14", "x"]) is None
+
+print("Test Case 4. Try Parse Now -> {0}".format(try_parse_row(["MSFT", "2018-12-14", "106.03"]) == stock))
+assert try_parse_row(["MSFT", "2018-12-14", "x"]) == stock
