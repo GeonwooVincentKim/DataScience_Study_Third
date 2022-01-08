@@ -92,6 +92,6 @@ def parse_now(row: List[str]) -> StockPrice:
 
 stock = parse_now(["MSFT", "2018-12-14", "106.03"])
 print("Stock -> {0}".format(stock))
-print("Stock Symbol -> {0}".format(stock.symbol))
-print("Stock Date -> {0}".format(stock.date))
-print("Stock Closing Price -> {0}".format(stock.closing_price))
+print("Check `Stock Symbol` equals to `MSFT` -> {0}".format(stock.symbol == "MSFT"))
+print("Check `Stock Date` equals to `2018-12-14` -> {0}".format(stock.date == datetime.date(2018, 12, 14)))
+print("Check `Stock Closing Price` equals to `106.03 -> {0}".format(stock.closing_price == 106.03))
