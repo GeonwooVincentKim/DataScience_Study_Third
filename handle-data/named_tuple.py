@@ -1,6 +1,7 @@
 import datetime
+import re
 from collections import namedtuple
-from typing import NamedTuple, List
+from typing import NamedTuple, List, Optional
 
 from dataclasses import dataclass
 from dateutil.parser import parse
@@ -95,3 +96,29 @@ print("Stock -> {0}".format(stock))
 print("Check `Stock Symbol` equals to `MSFT` -> {0}".format(stock.symbol == "MSFT"))
 print("Check `Stock Date` equals to `2018-12-14` -> {0}".format(stock.date == datetime.date(2018, 12, 14)))
 print("Check `Stock Closing Price` equals to `106.03 -> {0}".format(stock.closing_price == 106.03))
+
+print("\n------------------------------------\n")
+
+
+def try_parse_row(row: List[str]) -> Optional[StockPrice]:
+    symbol, date_, closing_price_ = row
+
+    # Every Stock-Symbol are composed of Capital-Letter
+    if not re.match(r"^[A-Z]+$", symbol):
+        return None
+
+    try:
+        date = parse(date_).date()
+    except ValueError:
+        return None
+
+    try:
+        closing_price = float(closing_price_)
+    except ValueError:
+        return None
+
+    return StockPrice(symbol, date, closing_price)
+
+
+print("Test Case 1. Try Parse Now -> {0}".format(try_parse_row(["MSFT0", "2018-12-14", "106.03"]) is None))
+assert try_parse_row(["MSFT0", "2018-12-14", "106.03"]) is None
