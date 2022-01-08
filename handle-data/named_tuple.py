@@ -148,7 +148,19 @@ print("Data -> {0}".format(data))
 # save_directory = "E://Python_Data_Analysis_3//handle-data//colon_delimited_stock_prices.csv"
 
 # with open(os.path.join("path", "to", "colon_delimited_stock.csv"), "rU") as f:
-with open('../colon_delimited_stock_price.csv') as f:
+# handle-data\comma_delimited_stock_prices.csv
+# E:\Python_Data_Analysis_3\handle-data\comma_delimited_stock_prices.csv
+with open("comma_delimited_stock_prices.csv") as f:
     reader = csv.reader(f)
+    print(f.readlines())
     print("Reader -> {0}".format(reader))
+
+    for row in reader:
+        maybe_stock = try_parse_row(row)
+
+        if maybe_stock is None:
+            print(f"Skipping invalid row: {row}")
+        else:
+            data.append(maybe_stock)
+
 
