@@ -84,14 +84,28 @@ all_changes = [
 print("All Changes -> {0}".format(all_changes))
 print("\n")
 
-max_change = max(all_changes, key=lambda change: change.pct_change)
-print("Max Change -> {0}".format(max_change))
-print("Max Change Symbol -> {0}".format(max_change.symbol == 'AAPL'))
-print("Max Change Date -> {0}".format(max_change.date == datetime.date(1997, 8, 6)))
-print("0.33 < Max-Change, Pct-Change < 0.34 -> {0}".format(0.33 < max_change.pct_change < 0.34))
+# max_change = max(all_changes, key=lambda change: change.pct_change)
+# print("Max Change -> {0}".format(max_change))
+# print("Max Change Symbol -> {0}".format(max_change.symbol == 'AAPL'))
+# print("Max Change Date -> {0}".format(max_change.date == datetime.date(1997, 8, 6)))
+# print("0.33 < Max-Change, Pct-Change < 0.34 -> {0}".format(0.33 < max_change.pct_change < 0.34))
 
-min_change = min(all_changes, key=lambda change: change.pct_change)
-print("Min Change -> {0}".format(min_change))
-print("Min Change Symbol -> {0}".format(min_change.symbol == 'AAPL'))
-print("Min Change Date -> {0}".format(max_change.date == datetime.date(2000, 9, 29)))
-print("-0.52 < Max-Change, Pct-Change < -0.51 -> {0}".format(-0.52 < min_change.pct_change < -0.51))
+# min_change = min(all_changes, key=lambda change: change.pct_change)
+# print("Min Change -> {0}".format(min_change))
+# print("Min Change Symbol -> {0}".format(min_change.symbol == 'AAPL'))
+# print("Min Change Date -> {0}".format(max_change.date == datetime.date(2000, 9, 29)))
+# print("-0.52 < Max-Change, Pct-Change < -0.51 -> {0}".format(-0.52 < min_change.pct_change < -0.51))
+
+changes_by_month: List[DailyChange] = {month: [] for month in range(1, 13)}
+print("Changes by Month -> {0}".format(changes_by_month))
+
+for change in all_changes:
+    changes_by_month[change.date.month].append(change)
+
+avg_daily_change = {
+    month: sum(change.pct_change for change in changes) / len(changes)
+    for month, changes in changes_by_month.items()
+}
+print("Average Daily Change -> {0}".format(avg_daily_change))
+
+print("Average Daily Change No.10 Index -> {0}".format(avg_daily_change[10] == max(avg_daily_change.values())))
