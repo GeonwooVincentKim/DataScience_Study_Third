@@ -1,3 +1,4 @@
+from re import S
 from named_tuple import *
 from collections import defaultdict
 from typing import Dict, List
@@ -38,4 +39,25 @@ print("Prices -> {0}".format(prices))
 
 for sp in data:
     prices[sp.symbol].append(sp)
+
+prices = {
+    symbol: sorted(symbol_prices)
+    for symbol, symbol_prices in prices.items()
+}
+print("After Sorted Symbol Prices -> {0}".format(prices))
+print("\n--------------------------------\n")
+
+
+def pct_change(yesterday: StockPrice, today: StockPrice) -> float:
+    return today.closing_price / yesterday.closing_price - 1
+
+
+# DailyChange Class
+class DailyChange(NamedTuple):
+    symbok: str
+    date: datetime.date
+    pct_change: float
+
+
+print("< DailyChange Class >")
 
