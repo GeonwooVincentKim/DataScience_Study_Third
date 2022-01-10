@@ -23,3 +23,9 @@ print("Current Data Information -> {0}".format(data))
 
 max_prices: Dict[str, float] = defaultdict(lambda: float('-inf'))
 print("Max Prices -> {0}".format(max_prices))
+
+for sp in data:
+    symbol, closing_price = sp.symbol, sp.closing_price
+
+    if closing_price > max_prices[symbol]:
+        max_prices[symbol] = closing_price
