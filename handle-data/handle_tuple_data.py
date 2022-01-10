@@ -1,6 +1,6 @@
 from named_tuple import *
 from collections import defaultdict
-from typing import Dict
+from typing import Dict, List
 
 
 data = [
@@ -12,6 +12,7 @@ data = [
 ]
 
 print("Current Data Information -> {0}".format(data))
+print("\n--------------------------------\n")
 
 # max_aapl_price = max(
 #     stock_price.closing_price
@@ -23,9 +24,18 @@ print("Current Data Information -> {0}".format(data))
 
 max_prices: Dict[str, float] = defaultdict(lambda: float('-inf'))
 print("Max Prices -> {0}".format(max_prices))
+print("\n--------------------------------\n")
 
 for sp in data:
     symbol, closing_price = sp.symbol, sp.closing_price
 
     if closing_price > max_prices[symbol]:
         max_prices[symbol] = closing_price
+
+
+prices: Dict[str, List[StockPrice]] = defaultdict(list)
+print("Prices -> {0}".format(prices))
+
+for sp in data:
+    prices[sp.symbol].append(sp)
+
