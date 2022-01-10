@@ -61,3 +61,24 @@ class DailyChange(NamedTuple):
 
 print("< DailyChange Class >")
 
+
+def day_over_day_changes(prices: List[StockPrice]) -> List[DailyChange]:
+    """
+        Estimates the `Stock-Price` that matches to `One-Stock` and is sorted
+    """
+    return [
+        DailyChange(
+            symbol=today.symbol,
+            date=today.date,
+            pct_change=pct_change(yesterday, today)
+        )
+        for yesterday, today in zip(prices, prices[1:])
+    ]
+
+
+all_changes = [
+    change
+    for symbol_prices in prices.values()
+    for change in day_over_day_changes(symbol_prices)
+]
+print("All Changes -> {0}".format(all_changes))
