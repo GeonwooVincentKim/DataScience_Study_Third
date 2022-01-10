@@ -15,12 +15,12 @@ data = [
 print("Current Data Information -> {0}".format(data))
 print("\n--------------------------------\n")
 
-# max_aapl_price = max(
-#     stock_price.closing_price
-#     for stock_price in data
-#     if stock_price.symbol == "AAPL"
-# )
-# print("Max AAPL Price -> {0}".format(max_aapl_price))
+max_aapl_price = max(
+    stock_price.closing_price
+    for stock_price in data
+    if stock_price.symbol == "AAPL"
+)
+print("Max AAPL Price -> {0}".format(max_aapl_price))
 
 
 max_prices: Dict[str, float] = defaultdict(lambda: float('-inf'))
@@ -82,3 +82,7 @@ all_changes = [
     for change in day_over_day_changes(symbol_prices)
 ]
 print("All Changes -> {0}".format(all_changes))
+print("\n")
+
+max_change = max(all_changes, key=lambda change: change.pct_change)
+print("Max Change -> {0}".format(max_change))
