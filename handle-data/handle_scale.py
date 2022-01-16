@@ -12,4 +12,5 @@ a_to_c = distance([63, 150], [70, 171])
 b_to_c = distance([67, 160], [70, 171])
 
 print("A to B -> {0}".format(a_to_b))
-
+print("B to C -> {0}".format(a_to_c))
+print("B to C -> {0}".format(a_to_c))
