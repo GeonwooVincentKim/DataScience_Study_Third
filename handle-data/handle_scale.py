@@ -1,8 +1,11 @@
 import os
 import sys
-
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
+from typing import Tuple
+
 from vector_example import distance
+from dispersion_example import standard_deviation
 
 
 print("\n-------------------------------\n")
@@ -23,3 +26,4 @@ print("\n-------------------------------\n")
 print("A to B (2nd) -> {0}".format(a_to_b))
 print("B to C (2nd) -> {0}".format(a_to_c))
 print("B to C (2nd) -> {0}".format(a_to_c))
+
