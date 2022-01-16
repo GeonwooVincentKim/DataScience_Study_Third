@@ -42,8 +42,17 @@ def scale(data: List[Vector]) -> Tuple[Vector, Vector]:
     stdev = [
         standard_deviation(
             [vector[i] for vector in data]
-            for i in range(dimension)
         )
+        for i in range(dimension)
     ]
     print("Standard Deviation -> {0}".format(stdev))
 
+
+vectors = [[-3, -1, 1], [-1, 0, 1], [1, 1, 1]]
+print("Vectors List -> {0}".format(vectors))
+
+means, stdevs = scale(vectors)
+# print(means == [-1, 0, 1])
+# print(stdevs == [2, 1, 0])
+# print("Meanings -> {0}".format(means))
+# print("Standard-Deviations -> {0}".format(stdevs))
