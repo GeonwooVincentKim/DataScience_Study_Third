@@ -56,3 +56,23 @@ means, stdevs = scale(vectors)
 # print(stdevs == [2, 1, 0])
 # print("Meanings -> {0}".format(means))
 # print("Standard-Deviations -> {0}".format(stdevs))
+
+
+def rescale(data: List[Vector]):
+    dim = len(data[0])
+    means, stdevs = scale(data)
+
+    # Create Each Vectors Copy
+    rescaled = [v[:] for v in data]
+
+    for v in rescaled:
+        for i in range(dim):
+            if stdevs[i] > 0:
+                v[i] = (v[i] - means[i]) / stdevs[i]
+
+    return rescaled
+
+
+means, stdevs = scale(rescale(vectors))
+print(means)
+print(stdevs)
