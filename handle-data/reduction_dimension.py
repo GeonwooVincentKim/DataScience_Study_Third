@@ -15,4 +15,3 @@ def de_mean(data: List[Vector]) -> List[Vector]:
         subtract(vector, mean)
         for vector in data
     ]
-
