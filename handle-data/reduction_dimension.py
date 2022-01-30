@@ -1,6 +1,11 @@
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
 from vector_example import subtract, List, Vector, vector_mean, magnitude, dot
 from handle_scale import scale
 from matrix_example import shape, make_matrix
+from gradient_descent_example import *
 
 import numpy as np
 import matplotlib as plt
