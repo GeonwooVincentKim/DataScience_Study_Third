@@ -1,4 +1,4 @@
-from vector_example import subtract, List, Vector, vector_mean
+from vector_example import subtract, List, Vector, vector_mean, magnitude
 from handle_scale import scale
 from matrix_example import shape, make_matrix
 
@@ -15,3 +15,10 @@ def de_mean(data: List[Vector]) -> List[Vector]:
         subtract(vector, mean)
         for vector in data
     ]
+
+
+def direction(w: Vector) -> Vector:
+    mag = magnitude(w)
+    print("Magnitude -> {0}".format(mag))
+
+    return [w_i / mag for w_i in w]
