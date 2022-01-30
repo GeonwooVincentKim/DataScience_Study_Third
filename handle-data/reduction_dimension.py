@@ -2,8 +2,10 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
+import tqdm
+
 from vector_example import subtract, List, Vector, vector_mean, magnitude, dot
-from handle_scale import scale
+# from handle_scale import scale
 from matrix_example import shape, make_matrix
 from gradient_descent_example import *
 
@@ -46,4 +48,19 @@ def directional_variance_gradient(data: List[Vector], w: Vector):
         sum(2 * dot(v, w_dir) * v[i] for v in data)
         for i in range(len(w))
     ]
+
+
+def first_principal_component(data: List[Vector], n: int = 100, step_size: float = 0.1):
+    # Stating from randomly guessed position
+    guess = [1.0 for _ in data[0]]
+    print("\n-----------------\nGuess ->{0}".format(guess))
+    
+    with tqdm.trange(n) as t:
+        for _ in t:
+            dv = directional_variance(data, guess)
+            gradient = directional_variance(data, guess)
+            guess = gradient_step(guess, gradient, step_size)
+            t.set_description(f"dv: {dv:.3f}")
+
+    return direction(guess)
 
