@@ -4,7 +4,7 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 import tqdm
 
-from vector_example import subtract, List, Vector, vector_mean, magnitude, dot
+from vector_example import subtract, List, Vector, vector_mean, magnitude, dot, scalar_multiply
 # from handle_scale import scale
 from matrix_example import shape, make_matrix
 from gradient_descent_example import *
@@ -64,3 +64,21 @@ def first_principal_component(data: List[Vector], n: int = 100, step_size: float
 
     return direction(guess)
 
+
+def project(v: Vector, w: Vector) -> Vector:
+    """
+       Project `v` to the direction of `w`
+    """
+    projection_length = dot(v, w)
+    return scalar_multiply(projection_length, w)
+
+
+def remove_projection_from_vector(v: Vector, w: Vector) -> Vector:
+    """
+        Subtract `v` to the result of projection `v` to the `w`
+    """
+    return subtract(v, project(v, w))
+
+
+def remove_projection(data: List[Vector], w: Vector) -> List[Vector]:
+    return [remove_projection_from_vector(v, w) for v in data]
